@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://dbj3md5ysgrnd"]
+
+[ext_resource type="Script" path="res://attributes/attribute.gd" id="1_q1vhx"]
+
+[resource]
+script = ExtResource("1_q1vhx")
+attribute_modifier = 1
+attribute_value = 0

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b0vvel620qpyr"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_qqa5i"]
+[ext_resource type="Texture2D" uid="uid://cu51x5x0qefpu" path="res://item/colored-transparent_packed.png" id="2_bs1hk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21el2"]
+atlas = ExtResource("2_bs1hk")
+region = Rect2(544, 96, 16, 16)
+
+[resource]
+script = ExtResource("1_qqa5i")
+name = "Dagger"
+description = "For CQC enthusiasts."
+stackable = false
+consumable = false
+equipment = true
+healing = false
+heal_value = 0
+texture = SubResource("AtlasTexture_21el2")

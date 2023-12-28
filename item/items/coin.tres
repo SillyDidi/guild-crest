@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b7jdahrqxaaxu"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_s1tic"]
+[ext_resource type="Texture2D" uid="uid://cu51x5x0qefpu" path="res://item/colored-transparent_packed.png" id="2_8jjke"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws1ye"]
+atlas = ExtResource("2_8jjke")
+region = Rect2(656, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_s1tic")
+name = "Coin"
+description = "Metal currency? In this economy??"
+stackable = true
+consumable = false
+equipment = false
+healing = false
+heal_value = 0
+texture = SubResource("AtlasTexture_ws1ye")

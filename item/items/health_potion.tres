@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b7wiyy1nc6eww"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_80613"]
+[ext_resource type="Texture2D" uid="uid://cu51x5x0qefpu" path="res://item/colored-transparent_packed.png" id="2_c0ftc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w011p"]
+atlas = ExtResource("2_c0ftc")
+region = Rect2(528, 208, 16, 16)
+
+[resource]
+script = ExtResource("1_80613")
+name = "Potion of Healing"
+description = "Better healing through alchemy!"
+stackable = true
+consumable = true
+equipment = false
+healing = true
+heal_value = 1
+texture = SubResource("AtlasTexture_w011p")
