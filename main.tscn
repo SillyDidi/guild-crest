@@ -1,23 +1,17 @@
-[gd_scene load_steps=31 format=3 uid="uid://cmjf4581yk5ss"]
+[gd_scene load_steps=24 format=3 uid="uid://cmjf4581yk5ss"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_jeb6c"]
 [ext_resource type="PackedScene" uid="uid://dnhte5xr1itnp" path="res://player/player.tscn" id="1_reydv"]
 [ext_resource type="PackedScene" uid="uid://c3pxfs5sswy5r" path="res://inventory/inventory.tscn" id="2_ewiai"]
 [ext_resource type="Texture2D" uid="uid://b4nxbau7j7bvw" path="res://prototype_environmenttexture.png" id="2_ltia0"]
 [ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3_f5mkf"]
-[ext_resource type="Script" path="res://attributes/attribute.gd" id="5_b6ibt"]
 [ext_resource type="PackedScene" uid="uid://dt7phqa5td1bf" path="res://inventory/slot.tscn" id="5_pi5kh"]
-[ext_resource type="Resource" uid="uid://clbt4fjakpol6" path="res://attributes/might.tres" id="6_8c6qs"]
 [ext_resource type="PackedScene" uid="uid://j00g00lmmces" path="res://interactable/chest.tscn" id="6_lk3f7"]
-[ext_resource type="Resource" uid="uid://cq1aiu2l75sio" path="res://attributes/defense.tres" id="7_8r51m"]
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="7_g6oq3"]
 [ext_resource type="PackedScene" uid="uid://dvdo2phoyfd7q" path="res://inventory/hot_bar_inventory.tscn" id="7_vrstd"]
 [ext_resource type="Resource" uid="uid://b7jdahrqxaaxu" path="res://item/items/coin.tres" id="8_1vsf5"]
-[ext_resource type="Resource" uid="uid://cph5slplhfc65" path="res://attributes/arcana.tres" id="8_28klw"]
-[ext_resource type="Resource" uid="uid://bqsvf48c38sgq" path="res://attributes/mana.tres" id="9_aiccu"]
+[ext_resource type="Script" path="res://health_bar.gd" id="9_6rfdi"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="9_v2q25"]
-[ext_resource type="Resource" uid="uid://dbj3md5ysgrnd" path="res://attributes/magic_defense.tres" id="10_1b7eu"]
-[ext_resource type="Resource" uid="uid://ifynq3wohyn4" path="res://attributes/movement_speed.tres" id="11_204m1"]
 [ext_resource type="PackedScene" uid="uid://bai2b020c8tlj" path="res://item/items/pick_up.tscn" id="11_imqsa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_65hsf"]
@@ -49,11 +43,6 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 [sub_resource type="Resource" id="Resource_b2etb"]
 script = ExtResource("7_g6oq3")
 slot_datas = Array[ExtResource("9_v2q25")]([null, null, null])
-
-[sub_resource type="Resource" id="Resource_y1evu"]
-script = ExtResource("5_b6ibt")
-attribute_modifier = 5.0
-attribute_value = 2
 
 [sub_resource type="Resource" id="Resource_r8swg"]
 script = ExtResource("9_v2q25")
@@ -91,13 +80,6 @@ shape = SubResource("ConcavePolygonShape3D_w7qsj")
 
 [node name="Player" parent="." instance=ExtResource("1_reydv")]
 equipment_data = SubResource("Resource_b2etb")
-vigor = SubResource("Resource_y1evu")
-might = ExtResource("6_8c6qs")
-defense = ExtResource("7_8r51m")
-arcana = ExtResource("8_28klw")
-mana = ExtResource("9_aiccu")
-magic_defense = ExtResource("10_1b7eu")
-movement_speed = ExtResource("11_204m1")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -146,6 +128,16 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 362.0
 offset_bottom = 90.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 303.0
+grow_vertical = 0
+show_percentage = false
+script = ExtResource("9_6rfdi")
 
 [node name="Chest" parent="." instance=ExtResource("6_lk3f7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

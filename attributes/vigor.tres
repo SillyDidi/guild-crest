@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://c64h3l7388l7e"]
-
-[ext_resource type="Script" path="res://attributes/attribute.gd" id="1_w3qpa"]
-
-[resource]
-script = ExtResource("1_w3qpa")
-attribute_modifier = 1
-attribute_value = 0

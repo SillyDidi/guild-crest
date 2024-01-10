@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnhte5xr1itnp"]
+[gd_scene load_steps=8 format=3 uid="uid://dnhte5xr1itnp"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_korqu"]
 [ext_resource type="Texture2D" uid="uid://bv4axaiq1lj4w" path="res://prototype_playertexture.png" id="1_tdirh"]
 [ext_resource type="Resource" uid="uid://dg41lhexww2kg" path="res://inventory/test_inv.tres" id="2_4kofg"]
+[ext_resource type="PackedScene" uid="uid://cng32erfh2rew" path="res://jobs/job.tscn" id="4_n06ci"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbmcb"]
 diffuse_mode = 3
@@ -30,13 +31,6 @@ mesh = SubResource("CapsuleMesh_sh3uf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_jyqis")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46174, 0)
-
-[node name="InteractRay" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -2.5)
-collision_mask = 4
-
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,3 +44,16 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="CameraMount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40423, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraMount"]
+transform = Transform3D(0.999739, 0.00203219, -0.0227746, 0.000841098, 0.9921, 0.125448, 0.0228496, -0.125434, 0.991839, 1.17056, 1.29149, 2.6095)
+
+[node name="InteractRay" type="RayCast3D" parent="CameraMount/Camera3D"]
+transform = Transform3D(1, 2.32831e-10, -1.86265e-09, 0, 1, 0, -1.86265e-09, -7.45058e-09, 1, 0, 0, 0)
+target_position = Vector3(0, 0, -7.5)
+collision_mask = 4
+
+[node name="Job" parent="." instance=ExtResource("4_n06ci")]

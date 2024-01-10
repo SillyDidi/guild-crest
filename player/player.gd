@@ -2,27 +2,23 @@ extends CharacterBody3D
  
 @export var inventory_data: InventoryData
 @export var equipment_data: InventoryData
-@export var vigor: Attribute
-@export var might: Attribute
-@export var defense: Attribute
-@export var arcana: Attribute
-@export var mana: Attribute
-@export var magic_defense: Attribute
-@export var movement_speed: Attribute
 
-# Get the attributes by multiplying vigor value by its attribute modifier
 var speed: float = 5.0
 var jump_velocity: float = 4.5
 var health: int = 5
- 
+
+@export var sens_horizontal: float = 0.5
+@export var sens_vertical: float = 0.5
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
  
 signal toggle_inventory
 
-@onready var camera: Camera3D = $Camera3D
-@onready var interact_ray = $Camera3D/InteractRay
+@onready var camera_mount = $CameraMount
+@onready var camera: Camera3D = $CameraMount/Camera3D
+@onready var interact_ray = $CameraMount/Camera3D/InteractRay
 
 func _ready() -> void:
 	PlayerManager.player = self
@@ -31,9 +27,8 @@ func _ready() -> void:
  
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * .005)
-		camera.rotate_x(-event.relative.y * .005)
-		camera.rotation.x = clamp(camera.rotation.x, -PI/4, PI/4)
+		rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+		camera_mount.rotation.x = (clamp(camera_mount.rotation.x + deg_to_rad(-event.relative.y * sens_vertical), -PI / 2 , PI / 2.1))
  
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
@@ -69,6 +64,8 @@ func _physics_process(delta: float) -> void:
 func interact() -> void:
 	if interact_ray.is_colliding():
 		interact_ray.get_collider().player_interact()
+	else:
+		return
 
 func get_drop_position() -> Vector3:
 	var direction = -camera.global_transform.basis.z

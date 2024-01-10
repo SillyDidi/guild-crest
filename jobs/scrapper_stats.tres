@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StartingStats" load_steps=2 format=3 uid="uid://bda2ldj6gw8u2"]
+
+[ext_resource type="Script" path="res://jobs/starting_stats.gd" id="1_ymxyj"]
+
+[resource]
+script = ExtResource("1_ymxyj")
+job_name = "Scrapper"
+max_health = 10
+max_spell_slots = 1
+armor_class = 10
+strength = 10
+dexterity = 10
+constitution = 10
+intelligence = 10
+wisdom = 10
+charisma = 10

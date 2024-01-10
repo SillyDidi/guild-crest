@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://cng32erfh2rew"]
+
+[ext_resource type="Script" path="res://jobs/job.gd" id="1_rrrrw"]
+[ext_resource type="Resource" uid="uid://bda2ldj6gw8u2" path="res://jobs/scrapper_stats.tres" id="2_4luf8"]
+[ext_resource type="Script" path="res://jobs/character_stats.gd" id="3_rciqf"]
+[ext_resource type="Script" path="res://skills/skills_data.gd" id="4_rnctm"]
+[ext_resource type="Resource" uid="uid://dqy8qu6ih8plq" path="res://skills/mothlight.tres" id="5_cbaoo"]
+
+[node name="Job" type="Node"]
+script = ExtResource("1_rrrrw")
+starting_stats = ExtResource("2_4luf8")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_rciqf")
+
+[node name="Skills" type="Node" parent="."]
+script = ExtResource("4_rnctm")
+skills = Array[Resource("res://skills/skill.gd")]([ExtResource("5_cbaoo")])

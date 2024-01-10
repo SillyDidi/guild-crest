@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://dqy8qu6ih8plq"]
+
+[ext_resource type="Script" path="res://skills/skill.gd" id="1_537sl"]
+
+[resource]
+script = ExtResource("1_537sl")
+skill_name = "Mothlight"
+skill_description = "A blast of flame."
+spell_slot_cost = 1
+base_damage = 1
